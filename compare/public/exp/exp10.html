@@ -8,7 +8,8 @@
 <body>
 <p><a href="/">Назад</a></p>
 <p>Load: 
-	<button onclick="cnsl.innerHTML='...';setTimeout(function(){ load(); },3000);">XMLHttpRequest</button>
+	<button onclick="cnsl.innerHTML='...';setTimeout(function(){ load('/xhr/test.html'); },3000);">XMLHttpRequest</button>
+	<button onclick="cnsl.innerHTML='...';setTimeout(function(){ load('/xhr/test_close.html'); },3000);">XMLHttpRequest (Connection: close)</button>
 </p>
 <div id="cnsl"></div>
 <script type="text/javascript">
@@ -18,13 +19,13 @@ var
 	diffTime = 0,
 	delay = 10000
 ;
-var load = function(){
+var load = function(url){
 	var ajax = new XMLHttpRequest();
-	ajax.open('GET', '/xhr/test.html?t='+(new Date().getTime()), true);
+	ajax.open('GET', url + '?t='+(new Date().getTime()), true);
 	ajax.onreadystatechange = function(){
 		if (ajax.readyState == 4) {
 			if(ajax.status == 200) {
-				setTimeout(load, delay);
+				setTimeout(function(){ load(url); }, delay);
 
 				cnsl.innerHTML = count + ' ' + ( (new Date().getTime()) - diffTime - delay );;
 				diffTime = (new Date().getTime());
