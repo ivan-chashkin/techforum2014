@@ -1,14 +1,21 @@
 var 
-	connect = require('connect')
-	, base_folder = '/public'
-	, port = 23429
+	http = require('http'),
+	serveStatic = require('serve-static'),
+	base_folder = '/public',
+	finalhandler = require('finalhandler'),
+	port = 23429
 ;
 
-var app = connect.createServer(
-    connect.static(__dirname + base_folder)
-).listen(port);
+var serve = serveStatic(__dirname + base_folder)
 
-var io = require('socket.io').listen(app);
+var server = http.createServer(function(req, res){
+  var done = finalhandler(req, res);
+  serve(req, res, done);
+})
+
+server.listen(port);
+
+var io = require('socket.io').listen(server);
 var count = 0;
 io.sockets.on('connection', function (socket) {
 	socket.emit('test');
