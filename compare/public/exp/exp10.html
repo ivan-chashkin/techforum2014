@@ -22,9 +22,6 @@ var
 var load = function(url){
 	var ajax = new XMLHttpRequest();
 	ajax.open('GET', url + '?t='+(new Date().getTime()), true);
-	if (url == '/xhr/test_close.html') {
-		ajax.setRequestHeader('Connection', 'close');
-	}
 	ajax.onreadystatechange = function(){
 		if (ajax.readyState == 4) {
 			if(ajax.status == 200) {
