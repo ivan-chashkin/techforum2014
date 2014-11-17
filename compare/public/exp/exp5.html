@@ -1,0 +1,157 @@
+<!doctype html>
+<html manifest="../cache.manifest">
+<head>
+<meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0" />
+<meta charset="utf-8" />
+<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+<style type="text/css">
+.block{
+	margin:10px;
+}
+.block-sh{
+	margin:10px;
+}
+.link{
+	margin-right:10px;
+	cursor: pointer;
+}
+</style>
+</head>
+<body>
+<p><a href="/">Назад</a></p>
+<h1>Почему различна гировертикаль?</h1>
+<div class="control">
+	<button onclick="clearblocks()">Очистка</button>
+	<button onclick="delegate(1000)">$ delegate (1000 * 100)</button>
+	<button onclick="delegate2(1000)">$ listeners (1000 * 100)</button>
+	<button onclick="attribute(1000)">addEventListener (1000 * 100)</button>
+	<button onclick="attribute2(1000)">addEventListener (1000 * 100) /На родителе/</button>
+</div>
+<div id="blocks">
+
+</div>
+<script>
+var delayIterate = 1000000;
+var delayListeners = 1500;
+var blocks = document.getElementById('blocks');
+var clickFn = function(){
+	this.style.color = 'red';
+};
+
+var makeTree = function(num){
+	var result = {
+		parent: document.createElement('div'),
+		parents: [],
+		links: []
+	};
+
+	result.links = [];
+	for( var i = 0; i < num; i++ ){
+		var j = 0;
+		var parent = document.createElement('span');
+		var span = parent;
+		do{
+			span2 = document.createElement('span');
+			span.appendChild(span2);
+			span = span2;
+			j++;
+		}while( j < 100 );
+
+		var link = document.createElement('span');
+		link.className = 'link';
+		link.innerHTML = 'link ' + i;
+		span.appendChild(link);
+
+		result.links.push(link);
+		result.parents.push(parent);
+
+		result.parent.appendChild(parent);
+	}
+
+	return result;
+};
+
+var delegate = function(num){
+	setTimeout(function(){
+
+		var items = makeTree(num);
+
+		blocks.appendChild(items.parent);
+
+		setTimeout(function(){
+			// var i = delayIterate, k = 0;
+			// while(i--){ k += Math.random(); }
+			$(items.parent).on('click', '.link', clickFn);
+			// var i = delayIterate;
+			// while(i--){ k += Math.random(); }
+		}, delayListeners);
+
+	}, 3000);
+};
+
+var delegate2 = function(num){
+	setTimeout(function(){
+
+		var items = makeTree(num);
+
+		blocks.appendChild(items.parent);
+
+		setTimeout(function(){
+			// var i = delayIterate, k = 0;
+			// while(i--){ k += Math.random(); }
+			for( var i = 0; i < items.links.length; i++ ){
+				$(items.links[i]).on('click', clickFn);
+			}
+			// var i = delayIterate;
+			// while(i--){ k += Math.random(); }
+		}, delayListeners);
+
+	}, 3000);
+};
+
+var attribute = function(num){
+	setTimeout(function(){
+
+		var items = makeTree(num);
+
+		blocks.appendChild(items.parent);
+
+		setTimeout(function(){
+			// var i = delayIterate, k = 0;
+			// while(i--){ k += Math.random(); }
+			for( var i = 0; i < items.links.length; i++ ){
+				items.links[i].addEventListener('click', clickFn);
+			}
+			// var i = delayIterate;
+			// while(i--){ k += Math.random(); }
+		}, delayListeners);
+
+	}, 3000);
+};
+
+var attribute2 = function(num){
+	setTimeout(function(){
+
+		var items = makeTree(num);
+
+		blocks.appendChild(items.parent);
+
+		setTimeout(function(){
+			// var i = delayIterate, k = 0;
+			// while(i--){ k += Math.random(); }
+			for( var i = 0; i < items.parents.length; i++ ){
+				items.parents[i].addEventListener('click', clickFn);
+			}
+			// var i = delayIterate;
+			// while(i--){ k += Math.random(); }
+		}, delayListeners);
+
+	}, 3000);
+};
+
+var clearblocks = function(){
+	blocks.innerHTML = '';
+};
+</script>
+</body>
+</html>

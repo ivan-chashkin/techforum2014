@@ -1,0 +1,48 @@
+<!doctype html>
+<html manifest="../cache.manifest">
+<head>
+<meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0" />
+<meta charset="utf-8" />
+<title></title>
+</head>
+<body>
+<p><a href="/">Назад</a></p>
+<script type="text/javascript">
+var marker = function(){
+	var k = 0;
+	for (var i = 0; i < 1000000; i++) {
+		k += Math.random();
+	}
+};
+
+var underscore = document.createElement('script');
+underscore.setAttribute('src', '../js/underscore-min.js');
+var backbone = document.createElement('script');
+backbone.setAttribute('src', '../js/backbone-min.js');
+var jquery = document.createElement('script');
+jquery.setAttribute('src', '../js/jquery-1.11.0.min.js');
+
+setTimeout(function() {
+	marker();
+	setTimeout(function() {
+		document.head.appendChild(jquery);
+		setTimeout(function() {
+			marker();
+			setTimeout(function() {
+				document.head.appendChild(underscore);
+				setTimeout(function() {	
+					marker();
+					setTimeout(function() {
+						document.head.appendChild(backbone);
+						setTimeout(function() {
+							marker();
+						}, 200);
+					}, 200);
+				}, 200);
+			}, 200);
+		}, 200);
+	}, 200);
+}, 5000);
+</script>
+</body>
+</html>

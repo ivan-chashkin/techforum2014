@@ -1,0 +1,354 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>Стой, батарейки возьми...</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+</head>
+<body class="list">
+	
+	<header class="caption">
+		<h1>Стой, батарейки возьми...</h1>
+		<p>Мобильники против батарейки</p>
+	</header>
+
+	<section class="slide cover" id="Cover"><div>
+		<h2>Стой, батарейки возьми...</h2>
+		<p>Мобильный front-end, Иван Чашкин</p>
+		<img src="pictures/cover.jpg" alt="" style="width">
+		<!--
+			To apply styles to the certain slides
+			set slide ID to get needed elements
+			-->
+		<style>
+			#Cover h2 {
+				margin:30px 0 0;
+				color:#FFF;
+				text-align:center;
+				font-size:70px;
+				}
+			#Cover p {
+				margin:10px 0 0;
+				text-align:center;
+				color:#FFF;
+				font-style:italic;
+				font-size:20px;
+				}
+				#Cover p a {
+					color:#FFF;
+					}
+		</style>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Как и чем измеряли</h2>
+		<p>3A USB Charger + AD7705 + Raspberry Pi + NodeJS + Chrome Browser</p>
+		<p class="note">Картинка</p>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<img src="pictures/meter.jpg" alt="" />
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Физика</h2>
+		<ul>
+			<li>Ёмкость аккумулятора: 1 А⋅ч = 3600 Кл</li>
+			<li>Заряд: 1 Кл = 1 А·с</li>
+		</ul>
+		
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Режим ожидания</h2>
+		<div>0.0189 Кл в секунду = 68.04 К·ч</div>
+		<img src="pictures/standBy.svg" alt="" width="100%" />
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Емкость аккумулятора</h2>
+		<ul>
+			<li>Ёмкость: 2915 мА⋅ч = 10494 Кл</li>
+			<li>Время жизни: 10494 Кл / 68.04 К·ч = 154 ч :-(</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Отправляем спать - 362,6%</h2>
+		<div>2.3987 Кл (±35 с)</div>
+		<div>0.0189 Кл * 35 c = 0,6615 Кл</div>
+		<img src="pictures/clickToPowerButton.svg" alt="" width="100%" />
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Посмотреть время - 502,3%</h2>
+		<div>1.6139 Кл (±17 с)</div>
+		<div>0.0189 Кл * 17 c = 0,3213 Кл</div>
+		<img src="pictures/checkTime.svg" alt="" width="100%" />
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Домашний экран - 819%</h2>
+		<div>0.1548 Кл·с</div>
+		<img src="pictures/home_screen.svg" alt="" width="100%" />
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Красивый паралакс - 1462%</h2>
+		<div>0.2765 Кл·с</div>
+		<img src="pictures/home_screen_move.svg" alt="" width="100%" />
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Яркость 0, 50, 100%</h2>
+		<div>0.1228, 0.2050, 0.4662 Кл·с <br /></div>
+		<div>увеличение яркости с 50 до 100% сжирает 940,32 Кл·ч</div>
+		<img src="pictures/about_blank_bright.svg" alt="" width="100%" />
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Safari: "about:blank" - 650%</h2>
+		<div>0.1228 Кл·с</div>
+		<img src="pictures/about_blank.svg" alt="" width="100%" />
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Safari: Box shadow</h2>
+		<img src="pictures/box_shadow.svg" alt="" width="100%" />
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Safari: Box shadow</h2>
+		<table>
+			<thead>
+				<tr>
+					<td></td>
+					<th>-</th>
+					<th>+</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>1 блок</th>
+					<th>0.0188 (67ms)</th>
+					<th>0.0180 (67ms)</th>
+				</tr>
+				<tr>
+					<th>100 блоков</th>
+					<th>0.0344 (114ms)</th>
+					<th>0.0369 (123ms)</th>
+				</tr>
+			</tbody>
+		</table>
+		<p>Разница: 7% по энергии и времени (?)</p>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Safari: Text shadow - 20-50%</h2>
+		<div>0.0331 vs 0.0446</div>
+		<img src="pictures/text_shadow.svg" alt="" width="100%" />
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Safari: CSS Transform animate</h2>
+		<div>0.4891 Кл - анимация 3 секунды</div>
+		<img src="pictures/css_transform.svg" alt="" width="100%" />
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Safari: CSS DOM animate</h2>
+		<div>1.0694 Кл - анимация 3 секунды</div>
+		<img src="pictures/css_dom.svg" alt="" width="100%" />
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Safari: CSS parse - 0,0412</h2>
+		<img src="pictures/css_parse.svg" alt="" width="100%" />
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Safari: JS parse</h2>
+		<img src="pictures/js_scripts.svg" alt="" width="100%" />
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Safari: Listeners</h2>
+		<img src="pictures/js_listeners.svg" alt="" width="100%" />
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Safari: Listeners</h2>
+		<table>
+			<thead>
+				<tr>
+					<td>Тест</td>
+					<th>Энергия (К)</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>jQuery delegate</th>
+					<th>0.0039</th>
+				</tr>
+				<tr>
+					<th>jQuery listeners</th>
+					<th>0.0264</th>
+				</tr>
+				<tr>
+					<th>addEventListeners</th>
+					<th>0.0055</th>
+				</tr>
+				<tr>
+					<th>addEventListeners*</th>
+					<th>0.0055</th>
+				</tr>
+			</tbody>
+		</table>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Safari: Тап в пустоту</h2>
+		<div>0.2895 Кл - 0.1228 Кл·с * 2 c = 0,0439 Кл</div>
+		<img src="pictures/simple_tap.svg" alt="" width="100%" />
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Safari: Listeners click</h2>
+		<table>
+			<thead>
+				<tr>
+					<td>Тест</td>
+					<th>Энергия (К)</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>jQuery delegate</th>
+					<th>+0,0898</th>
+				</tr>
+				<tr>
+					<th>jQuery listeners</th>
+					<th>+0,0857</th>
+				</tr>
+				<tr>
+					<th>addEventListeners</th>
+					<th>+0,0508</th>
+				</tr>
+				<tr>
+					<th>addEventListeners*</th>
+					<th>+0,0656</th>
+				</tr>
+			</tbody>
+		</table>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Safari: localStorage - 1KB Write</h2>
+		<img src="pictures/localstorage_write.svg" alt="" width="100%" />
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Safari: localStorage - 1MB Write</h2>
+		<img src="pictures/localstorage_write1mb.svg" alt="" width="100%" />
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Safari: localStorage - 2MB Write</h2>
+		<img src="pictures/localstorage_write2mb.svg" alt="" width="100%" />
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Safari: localStorage - Write</h2>
+		<table>
+			<thead>
+				<tr>
+					<td>Тест</td>
+					<th>Энергия (К)</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>1KB</th>
+					<th>0,0196</th>
+				</tr>
+				<tr>
+					<th>1MB</th>
+					<th>0,0468</th>
+				</tr>
+				<tr>
+					<th>2MB</th>
+					<th>0,0441</th>
+				</tr>
+			</tbody>
+		</table>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Safari: localStorage - Read</h2>
+		<div>+0.009К: 1KB, 1MB, 2MB</div>
+		<img src="pictures/localstorage_read.svg" alt="" width="100%" />
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Safari: appendChild</h2>
+		<img src="pictures/js_appendChild.svg" alt="" width="100%" />
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Safari: innerHTML</h2>
+		<img src="pictures/js_innerHTML.svg" alt="" width="100%" />
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Safari: <span style="color:#c42525;">appendChild</span> VS <span style="color:#2f7ed8;">innerHTML</span></h2>
+		<pre>
+			<code>about:blank - 0.1228К (1s)</code>
+			<code>appendChild - 0.0279К (134ms)</code>
+			<code>innerHTML - 0.0459К (175ms)</code>
+		</pre>
+		<p>innerHTML больше в <strong>1.6 раз</strong></p>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Safari: <span style="color:#2f7ed8;">innerHTML</span> VS <span style="color:#c42525;">removeChild</span></h2>
+		<img src="pictures/js_remove.svg" alt="" width="100%" />
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Safari: WiFi <span style="color:#2f7ed8;">ajax</span> VS <span style="color:#c42525;">WebSocket</span></h2>
+		<img src="pictures/js_wifiajax.svg" alt="" width="100%" />
+		<p><span style="color:#2f7ed8;">ajax: 0.0429К</span><br />
+		<span style="color:#c42525;">webSocket: 0.0258К</span><br />
+		ajax запрос в 1.6 раз больше</p>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Safari: 3g <span style="color:#c42525;">WebSocket</span></h2>
+		<img src="pictures/js_3g_socket.svg" alt="" width="100%" />
+		<p>0.4729К <strong>(!!! 3.5 секунды !!!)</strong></p>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Safari: 3g <span style="color:#2f7ed8;">ajax</span></h2>
+		<img src="pictures/js_3g_ajax.svg" alt="" width="100%" />
+		<p>0.8973К <strong>(!!! 5 секунд !!!)</strong></p>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Safari: while(1)</h2>
+		<p>Проживет 7 часов</p>
+		<img src="pictures/js_while1.svg" alt="" width="100%" />
+	</div></section>
+
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+	<div class="progress"><div></div></div>
+	<script src="shower/shower.min.js"></script>
+	<!-- Copyright © 2013 Yours Truly, Famous Inc. -->
+	<!-- Photos by John Carey, fiftyfootshadows.net -->
+</body>
+</html>

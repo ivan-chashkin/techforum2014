@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0" />
+<meta charset="utf-8" />
+<title></title>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+var 
+	diffTime = 0,
+	delay = 10000
+;
+var start = function(){
+	var count = 0;
+	var cnsl = document.getElementById('cnsl');
+	var socket = io.connect(window.location.protocol + '//' + window.location.host);
+	socket.on('test', function (data) {
+		setTimeout(function(){
+			socket.emit('test', { test: 'test '+count });
+			cnsl.innerHTML = count + ' ' + ( (new Date().getTime()) - diffTime - delay );
+			diffTime = (new Date().getTime());
+			count++;
+		}, delay);
+	});
+}
+</script>
+</head>
+<body>
+<p><a href="/">Назад</a></p>
+<p><button onclick="cnsl.innerHTML='...';setTimeout(function(){ start(); },3000);">Start</button></p>
+<div id="cnsl"></div>
+</body>
+</html>

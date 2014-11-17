@@ -1,0 +1,72 @@
+<!doctype html>
+<html manifest="../cache.manifest">
+<head>
+<meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0" />
+<meta charset="utf-8" />
+<title></title>
+</head>
+<body>
+<p><a href="/">Назад</a></p>
+<p>appendChild: <button onclick="setTimeout(function(){ append(100*1024); }, 10000);">100K</button> <button onclick="setTimeout(function(){ append(1*1024*1024); }, 10000);">1M</button></p>
+<p>innerHTML: <button onclick="setTimeout(function(){ inner(100*1024); }, 10000);">100K</button> <button onclick="setTimeout(function(){ inner(1*1024*1024); }, 10000);">1M</button></p>
+<p>
+	<button onclick="setTimeout(function(){ clearInner(); }, 10000);">Clear innerHTML=''</button>
+	<button onclick="setTimeout(function(){ clearRemove(cnsl); }, 10000);">Clear removeChild</button>
+</p>
+<div id="cnsl"></div>
+<script type="text/javascript">
+var cnsl = document.getElementById('cnsl');
+var LoremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+var Bytes = {
+	'1': '',
+	'1024': '',
+	'1048576': ''
+};
+var generate = function(size){
+	var str = '';
+	var cSize = size;
+	do{
+		if( cSize >= LoremIpsum.length ){
+			str += LoremIpsum;
+			cSize -= LoremIpsum.length;
+		}else{
+			str += LoremIpsum.substr(0,cSize);
+			cSize -= cSize;
+		}
+	}while( str.length < size );
+
+	return str;
+};
+var inner = function(size) {
+	if( !Bytes[size] ){
+		Bytes[size] = generate(size);
+	};
+	try{
+		cnsl.innerHTML = Bytes[size];
+	}catch(ex){
+		cnsl.innerHTML = 'Exeption: '+ex;
+	}
+}
+var append = function(size) {
+	if( !Bytes[size] ){
+		Bytes[size] = generate(size);
+	};
+	try{
+		cnsl.appendChild( document.createTextNode(Bytes[size]) );
+	}catch(ex){
+		cnsl.innerHTML = 'Exeption: '+ex;
+	}
+}
+var clearInner = function(){
+	cnsl.innerHTML = '';
+}
+var clearRemove = function(){
+	while( cnsl.childNodes.length ){
+		cnsl.removeChild( cnsl.childNodes[0] );
+	}
+}
+Bytes['102400'] = generate(100*1024);
+Bytes['1048576'] = generate(1024*1024);
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0" />
+<meta charset="utf-8" />
+<title></title>
+</head>
+<body>
+<p><a href="/">Назад</a></p>
+<p>Load: 
+	<button onclick="cnsl.innerHTML='...';setTimeout(function(){ load(); },3000);">XMLHttpRequest</button>
+</p>
+<div id="cnsl"></div>
+<script type="text/javascript">
+var 
+	cnsl = document.getElementById('cnsl'),
+	count = 0,
+	diffTime = 0,
+	delay = 10000
+;
+var load = function(){
+	var ajax = new XMLHttpRequest();
+	ajax.open('GET', '/xhr/test.html?t='+(new Date().getTime()), true);
+	ajax.onreadystatechange = function(){
+		if (ajax.readyState == 4) {
+			if(ajax.status == 200) {
+				setTimeout(load, delay);
+
+				cnsl.innerHTML = count + ' ' + ( (new Date().getTime()) - diffTime - delay );;
+				diffTime = (new Date().getTime());
+				count++;
+			}else{
+				cnsl.innerHTML = 'Error: '+ajax.status;
+			}
+		}
+	};
+	ajax.send(null);
+};
+</script>
+</body>
+</html>
