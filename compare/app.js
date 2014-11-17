@@ -1,7 +1,7 @@
 var 
 	connect = require('connect')
 	, base_folder = '/public'
-	, port = 8080
+	, port = 23429
 ;
 
 var app = connect.createServer(
