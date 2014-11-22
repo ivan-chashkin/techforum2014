@@ -32,13 +32,13 @@ io.sockets.on('connection', function (socket) {
 	socket.on('message', function (data) {
 		console.log('message: ' + data);
 	});
-	
-	socket.on('*', function () {
-		console.log('*: ' + arguments);
+
+	socket.on('all', function () {
+		console.log('all: ' + arguments);
 	});
 
-	socket.on('test', function () {
-		console.log('test message');
+	socket.on('test', function (data) {
+		console.log('test: ' + data);
 		socket.emit('test', { test: 'test ' + count });
 		count++;
 	});
