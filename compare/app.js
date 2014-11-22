@@ -28,6 +28,9 @@ io.sockets.on('connection', function (socket) {
 
 	socket.emit('test');
 
+	socket.on('message', function (data) {
+		console.log('message: ' + data);
+	});
 	socket.on('test', function () {
 		console.log('test message');
 		socket.emit('test', { test: 'test ' + count });
