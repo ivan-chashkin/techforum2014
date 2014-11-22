@@ -16,7 +16,7 @@ var server = http.createServer(function(req, res){
   if (req.url.match('test_close.html')) {
   	res.setHeader('Connection', 'close');
   }
-  //serve(req, res, done);
+  serve(req, res, done);
 });
 
 var WebSocketServer = require('websocket').server;
@@ -24,15 +24,8 @@ var wsServer = new WebSocketServer({
 	httpServer: server,
 	autoAcceptConnections: true
 });
-var res = [];
-for(var i in wsServer){
-	res.push(i);
-}
-console.log(res.join(', '));
-wsServer.on('message', function(){
-	console.log('wtf');
-});
-wsServer.addListener('request', function(request) {
+
+wsServer.on('request', function(request) {
 	console.log('request');
 
     request.on('message', function(message) {
