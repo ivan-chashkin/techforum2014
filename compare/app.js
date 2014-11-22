@@ -38,7 +38,7 @@ io.sockets.on('connection', function (socket) {
 	});
 
 	socket.on('test', function (data) {
-		console.log('test: ' + data);
+		console.log('test: ' + JSON.stringify(data));
 		socket.emit('test', { test: 'test ' + count });
 		count++;
 	});
