@@ -4,13 +4,42 @@
 <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0" />
 <meta charset="utf-8" />
 <title></title>
-<script src="/socket.io/socket.io.js"></script>
 <script>
 var 
 	diffTime = 0,
-	delay = 10000
+	delay = 10000,
+	socket
 ;
 var start = function(){
+
+	socket = new WebSocket('ws://localhost:23429/');
+
+socket.onopen = function() {
+	socket.send('message');
+	console.log('onopen');
+};
+ 
+socket.onclose = function(event) {
+	if (event.wasClean) {
+		console.log('Соединение закрыто чисто');
+	} else {
+		console.log('Обрыв соединения'); // например, "убит" процесс сервера
+	}
+	console.log('Код: ' + event.code + ' причина: ' + event.reason);
+};
+
+socket.onmessage = function(event) {
+  console.log("Получены данные " + event.data);
+};
+
+socket.onerror = function(error) {
+  console.log("Ошибка " + error.message);
+};
+
+
+
+/*
+
 	var count = 0;
 	var cnsl = document.getElementById('cnsl');
 	var socket = io.connect(window.location.protocol + '//' + window.location.host);
@@ -23,6 +52,8 @@ var start = function(){
 			count++;
 		}, delay);
 	});
+*/
+
 }
 </script>
 </head>
