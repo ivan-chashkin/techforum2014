@@ -22,7 +22,7 @@ var server = http.createServer(function(req, res){
 
 server.listen(port);
 
-var io = require('socket.io')(server, {'transports': ['websocket', 'polling']}).listen(server);
+var io = require('socket.io').listen(server);
 
 var count = 0;
 io.sockets.on('connection', function (socket) {
