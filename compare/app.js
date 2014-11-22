@@ -25,12 +25,18 @@ server.listen(port);
 var io = require('socket.io').listen(server);
 var count = 0;
 io.sockets.on('connection', function (socket) {
+	console.log('connection');
 
 	socket.emit('test');
 
 	socket.on('message', function (data) {
 		console.log('message: ' + data);
 	});
+	
+	socket.on('*', function () {
+		console.log('*: ' + arguments);
+	});
+
 	socket.on('test', function () {
 		console.log('test message');
 		socket.emit('test', { test: 'test ' + count });
