@@ -14,6 +14,7 @@ var start = function(){
 	var count = 0;
 	var cnsl = document.getElementById('cnsl');
 	var socket = io.connect(window.location.protocol + '//' + window.location.host);
+	global = socket;
 	socket.on('test', function (data) {
 		setTimeout(function(){
 			socket.emit('test', { test: 'test '+count });
