@@ -13,6 +13,7 @@ var serve = serveStatic(__dirname + base_folder);
 
 var server = http.createServer(function(req, res){
   var done = finalhandler(req, res);
+  console.log(req.url);
   if (req.url.match('test_close.html')) {
   	res.setHeader('Connection', 'close');
   }
