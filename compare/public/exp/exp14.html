@@ -1,0 +1,36 @@
+<!doctype html>
+<html manifest="../cache.manifest">
+<head>
+<meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0" />
+<meta charset="utf-8" />
+<title></title>
+</head>
+<body>
+<p><a href="/">Назад</a></p>
+<p><button onclick="countdown(5, loop);">while(1)</button></p>
+<div id="cnsl"></div>
+<script type="text/javascript">
+var cnsl = document.getElementById('cnsl');
+var count = 0;
+var loop = function(){
+	var output = '';
+	for( var i = 0; i < 100000; i++ ) {
+		output += '<span>' + Math.random() + '</span> ';
+	}
+	cnsl.innerHTML = '<div>' + count + '</div>' + output;
+	requestAnimationFrame(loop);
+};
+var countdown = function(count, loop){
+	if( count > 0 ){
+		cnsl.innerHTML = count;
+		setTimeout(function(){
+			countdown(count-1, loop);
+		}, 1000);
+	}else{
+		cnsl.innerHTML = 'Bye...';
+		setTimeout(loop, 100);
+	}
+};
+</script>
+</body>
+</html>

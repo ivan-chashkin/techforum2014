@@ -55,6 +55,7 @@ var chart = new Highcharts.Chart({
 
 					$analiticsBlock.append(tpl);
 				}
+				$analiticsBlock.append('<div>' + length + ' ms</div>');
 
 				return null;
 				var selectionArr = [];
@@ -100,7 +101,7 @@ var chart = new Highcharts.Chart({
     },
     yAxis: {
     	min: 0,
-    	max: 0.6,
+    	max: 0.8,
         title: {
             text: 'Amperage'
         }
