@@ -14,7 +14,7 @@ var cnsl = document.getElementById('cnsl');
 var count = 0;
 var loop = function(){
 	var output = '';
-	for( var i = 0; i < 10000; i++ ) {
+	for( var i = 0; i < 100; i++ ) {
 		output += '<span>' + Math.random() + '</span> ';
 	}
 	cnsl.innerHTML = '<div>' + count + '</div>' + output;
