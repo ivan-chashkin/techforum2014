@@ -42,10 +42,20 @@
 		</style>
 	</div></section>
 
+	<section class="slide cover"><div>
+		<video id="videoEralash" src="video/eralash.mp4" style="top:28px;width:100%;"></video>
+		<script type="text/javascript">
+		window.addEventListener('hashchange', function(){
+			if ( window.location.hash == '#2' ) {
+				document.getElementById('videoEralash').play();
+			} else {
+				document.getElementById('videoEralash').pause();
+			}
+		});</script>
+	</div></section>
+
 	<section class="slide"><div>
-		<h2>Как и чем измеряли</h2>
-		<p>3A USB Charger + AD7705 + Raspberry Pi + NodeJS + Chrome Browser</p>
-		<p class="note">Картинка</p>
+		<div style="text-align:center;"><img src="pictures/scheme 2.svg" style="width:670px;" /></div>
 	</div></section>
 
 	<section class="slide cover"><div>
@@ -53,58 +63,69 @@
 	</div></section>
 
 	<section class="slide"><div>
+		<img src="pictures/graph.svg" alt="" width="100%" />
+	</div></section>
+
+	<section class="slide"><div>
 		<h2>Физика</h2>
-		<ul>
-			<li>Ёмкость аккумулятора: 1 А⋅ч = 3600 Кл</li>
-			<li>Заряд: 1 Кл = 1 А·с</li>
-		</ul>
-		
+		<table>
+			<tbody>
+				<tr>
+					<th>Заряд</th>
+					<th>1 Кл = 1 А·с</th>
+				</tr>
+				<tr>
+					<th>Ёмкость</th>
+					<th>1 А⋅ч = 3600 Кл</th>
+				</tr>
+			</tbody>
+		</table>
 	</div></section>
 
 	<section class="slide"><div>
 		<h2>Режим ожидания</h2>
-		<div>0.0189 Кл в секунду = 68.04 К·ч</div>
 		<img src="pictures/standBy.svg" alt="" width="100%" />
+		<div>0.0189 Кл в секунду = 68.04 К·ч</div>
 	</div></section>
 
 	<section class="slide"><div>
 		<h2>Емкость аккумулятора</h2>
 		<ul>
 			<li>Ёмкость: 2915 мА⋅ч = 10494 Кл</li>
-			<li>Время жизни: 10494 Кл / 68.04 К·ч = 154 ч :-(</li>
+			<li class="next">Время жизни: 10494 Кл / 68.04 К·ч = 154 ч :-(</li>
 		</ul>
 	</div></section>
 
 	<section class="slide"><div>
 		<h2>Отправляем спать ± 2 минуты</h2>
-		<div>2.3987 Кл (±35 с)</div>
-		<div>0.0189 Кл * 35 c = 0,6615 Кл</div>
 		<img src="pictures/clickToPowerButton.svg" alt="" width="100%" />
+		<div>2.3987 Кл (±35 с)</div>
+		<div class="next">0.0189 Кл * 35 c = 0,6615 Кл</div>
 	</div></section>
 
 	<section class="slide"><div>
 		<h2>Посмотреть время ± 1.5 минуты</h2>
-		<div>1.6139 Кл (±17 с)</div>
-		<div>0.0189 Кл * 17 c = 0,3213 Кл</div>
 		<img src="pictures/checkTime.svg" alt="" width="100%" />
+		<div>1.6139 Кл (±17 с)</div>
+		<div class="next">0.0189 Кл * 17 c = 0,3213 Кл</div>
 	</div></section>
 
 	<section class="slide"><div>
 		<h2>Домашний экран - в 8 раз</h2>
-		<div>0.1548 Кл·с</div>
 		<img src="pictures/home_screen.svg" alt="" width="100%" />
+		<div>0.1548 Кл·с</div>
 	</div></section>
 
 	<section class="slide"><div>
 		<h2>Красивый паралакс - в 14 раз</h2>
-		<div>0.2765 Кл·с</div>
 		<img src="pictures/home_screen_move.svg" alt="" width="100%" />
+		<div>0.2765 Кл·с</div>
 	</div></section>
 
 	<section class="slide"><div>
 		<h2>Safari: "about:blank" - в 6.5 раз</h2>
-		<div>0.1228 Кл·с</div>
 		<img src="pictures/about_blank.svg" alt="" width="100%" />
+		<div>0.1228 Кл·с</div>
 	</div></section>
 
 	<section class="slide"><div>
@@ -154,6 +175,14 @@
 		<h2>Safari: CSS DOM animate</h2>
 		<div>1.0694 Кл - анимация 3 секунды</div>
 		<img src="pictures/css_dom.svg" alt="" width="100%" />
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Safari: CSS parse</h2>
+		<pre>
+			<code>4033 Правил</code>
+			<code>519 Кб</code>
+		</pre>
 	</div></section>
 
 	<section class="slide"><div>
@@ -345,6 +374,25 @@
 		<div>x6.5, x11, x24 Кл·с <br /></div>
 		<div></div>
 		<img src="pictures/about_blank_bright.svg" alt="" width="100%" />
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Максимум</h2>
+		<pre>
+			<code>Скрипт: <strong>0.69</strong> Кл·с</code>
+			<code class="next">+0.26 - Фонарик</code>
+			<code class="next">+0.34 - 100% Яркости</code>
+			
+			<code class="next">0.69 + 0.26 + 0.34 = 1.2 Кл·с</code>
+			<code class="next">10494 / 1.2 = <strong>2.42 часа</strong>!</code>
+		</pre>
+		
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Выводы</h2>
+		<p>...</p>
+		
 	</div></section>
 
 	<!--
