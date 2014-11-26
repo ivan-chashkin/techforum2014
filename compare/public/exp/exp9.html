@@ -74,15 +74,15 @@ var
 	timer = 0
 ;
 var _ddos = function() {
-	var stored = '';
+	var stored = generate(1024*1024);
 	timer = new Date().getTime();
 
 	var write = function() {
 		var add = Math.floor(Math.random()*10);
-		if (stored.length < 1*1024*1024) {
+		if (stored.length < 1.5*1024*1024) {
 			stored += '' + add;
 		} else {
-			stored = add;
+			stored = generate(1024*1024);
 		}
 		//cnsl.innerHTML = add;
 		//localStorage['stored'] = stored;
@@ -90,7 +90,7 @@ var _ddos = function() {
 		var now = new Date().getTime();
 		actsPerSecond++;
 		if (timer + 1000 < now ) {
-			cnsl.innerHTML = actsPerSecond;
+			cnsl.innerHTML = actsPerSecond + ' ' + add;
 			timer = new Date().getTime();
 			actsPerSecond = 0;
 		}
@@ -101,13 +101,15 @@ var _ddos = function() {
 }
 
 var ddos = function() {
-	var stored = '';
+	var stored = generate(1024*1024);
+	timer = new Date().getTime();
+
 	var write = function() {
 		var add = Math.floor(Math.random()*10);
-		if (stored.length < 1*1024*1024) {
+		if (stored.length < 1.5*1024*1024) {
 			stored += '' + add;
 		} else {
-			stored = add;
+			stored = generate(1024*1024);
 		}
 		//cnsl.innerHTML = add;
 		//localStorage['stored'] = stored;
@@ -115,7 +117,7 @@ var ddos = function() {
 		var now = new Date().getTime();
 		actsPerSecond++;
 		if (timer + 1000 < now ) {
-			cnsl.innerHTML = actsPerSecond;
+			cnsl.innerHTML = actsPerSecond + ' ' + add;
 			timer = new Date().getTime();
 			actsPerSecond = 0;
 		}
