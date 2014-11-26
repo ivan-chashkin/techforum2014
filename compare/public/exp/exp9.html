@@ -83,7 +83,7 @@ var _ddos = function() {
 	timer = new Date().getTime();
 
 	var write = function() {
-		var stored = generate(0.5*1024*1024, true);
+		var stored = generate(0.1*1024*1024, true);
 		//cnsl.innerHTML = add;
 		//localStorage['stored'] = stored;
 
@@ -104,7 +104,7 @@ var ddos = function() {
 	timer = new Date().getTime();
 
 	var write = function() {
-		var stored = generate(0.5*1024*1024, true);
+		var stored = generate(0.1*1024*1024, true);
 		//cnsl.innerHTML = add;
 		localStorage['stored'] = stored;
 
