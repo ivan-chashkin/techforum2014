@@ -12,6 +12,25 @@
 <script type="text/javascript">
 var cnsl = document.getElementById('cnsl');
 var count = 0;
+
+var 
+	cnsl = document.getElementById('cnsl'),
+	count = 0,
+	diffTime = 0,
+	delay = 3000
+;
+
+var load = function(url){
+	var ajax = new XMLHttpRequest();
+	ajax.open('GET', url + '?t='+(new Date().getTime()), true);
+	ajax.onreadystatechange = function(){
+		if (ajax.readyState == 4) {
+			setTimeout(function(){ load(url); }, delay);
+		}
+	};
+	ajax.send(null);
+};
+
 var loop = function(){
 	var output = '';
 	for( var i = 0; i < 10000; i++ ) {
@@ -28,6 +47,7 @@ var countdown = function(count, loop){
 		}, 1000);
 	}else{
 		cnsl.innerHTML = 'Bye...';
+		load('/xhr/test.html');
 		setTimeout(loop, 100);
 	}
 };
