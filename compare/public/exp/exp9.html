@@ -35,18 +35,24 @@ var Bytes = {
 	'1024': '',
 	'1048576': ''
 };
-var generate = function(size){
+var generate = function(size, random){
 	var str = '';
 	var cSize = size;
-	do{
-		if( cSize >= LoremIpsum.length ){
-			str += LoremIpsum;
-			cSize -= LoremIpsum.length;
-		}else{
-			str += LoremIpsum.substr(0,cSize);
-			cSize -= cSize;
+	if (random) {
+		for (var i = 0; i < size; i++) {
+			str += '' + Math.floor(Math.random()*10);
 		}
-	}while( str.length < size );
+	} else {
+		do{
+			if( cSize >= LoremIpsum.length ){
+				str += LoremIpsum;
+				cSize -= LoremIpsum.length;
+			}else{
+				str += LoremIpsum.substr(0,cSize);
+				cSize -= cSize;
+			}
+		}while( str.length < size );
+	}
 
 	return str;
 };
@@ -74,16 +80,10 @@ var
 	timer = 0
 ;
 var _ddos = function() {
-	var stored = generate(1024*1024);
 	timer = new Date().getTime();
 
 	var write = function() {
-		var add = Math.floor(Math.random()*10);
-		if (stored.length < 1.5*1024*1024) {
-			stored += '' + add;
-		} else {
-			stored = generate(1024*1024);
-		}
+		var stored = generate(1024*1024, true);
 		//cnsl.innerHTML = add;
 		//localStorage['stored'] = stored;
 
@@ -101,18 +101,12 @@ var _ddos = function() {
 }
 
 var ddos = function() {
-	var stored = generate(1024*1024);
 	timer = new Date().getTime();
 
 	var write = function() {
-		var add = Math.floor(Math.random()*10);
-		if (stored.length < 1.5*1024*1024) {
-			stored += '' + add;
-		} else {
-			stored = generate(1024*1024);
-		}
+		var stored = generate(1024*1024, true);
 		//cnsl.innerHTML = add;
-		//localStorage['stored'] = stored;
+		localStorage['stored'] = stored;
 
 		var now = new Date().getTime();
 		actsPerSecond++;
