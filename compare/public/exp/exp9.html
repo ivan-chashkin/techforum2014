@@ -20,6 +20,7 @@
 </p>
 <p>
 	<button onclick="cnsl.innerHTML='...';setTimeout(function(){ read(); },3000);">Read</button>
+	<button onclick="cnsl.innerHTML='...';setTimeout(function(){ _ddos(); },3000);">DDOS*</button>
 	<button onclick="cnsl.innerHTML='...';setTimeout(function(){ ddos(); },3000);">DDOS</button>
 </p>
 <div id="cnsl"></div>
@@ -68,6 +69,37 @@ var read = function(){
 	cnsl.innerHTML = 'Readed: '+localStorage['tmp'].length;
 }
 
+var 
+	actsPerSecond = 0,
+	timer = 0
+;
+var _ddos = function() {
+	var stored = '';
+	timer = new Date().getTime();
+
+	var write = function() {
+		var add = Math.floor(Math.random()*10);
+		if (stored.length < 1*1024*1024) {
+			stored += '' + add;
+		} else {
+			stored = add;
+		}
+		//cnsl.innerHTML = add;
+		//localStorage['stored'] = stored;
+
+		var now = new Date().getTime();
+		actsPerSecond++;
+		if (timer + 1000 > now ) {
+			cnsl.innerHTML = actsPerSecond;
+			timer = new Date().getTime();
+			actsPerSecond = 0;
+		}
+
+		window.requestAnimationFrame(write);
+	};
+	write();
+}
+
 var ddos = function() {
 	var stored = '';
 	var write = function() {
@@ -77,8 +109,16 @@ var ddos = function() {
 		} else {
 			stored = add;
 		}
-		cnsl.innerHTML = add;
-		localStorage['stored'] = stored;
+		//cnsl.innerHTML = add;
+		//localStorage['stored'] = stored;
+
+		var now = new Date().getTime();
+		actsPerSecond++;
+		if (timer + 1000 > now ) {
+			cnsl.innerHTML = actsPerSecond;
+			timer = new Date().getTime();
+			actsPerSecond = 0;
+		}
 
 		window.requestAnimationFrame(write);
 	};
