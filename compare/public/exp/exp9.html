@@ -90,7 +90,7 @@ var _ddos = function() {
 		var now = new Date().getTime();
 		actsPerSecond++;
 		if (timer + 1000 < now ) {
-			cnsl.innerHTML = actsPerSecond + ' ' + add;
+			cnsl.innerHTML = actsPerSecond + ' ' + Math.random();
 			timer = new Date().getTime();
 			actsPerSecond = 0;
 		}
@@ -111,7 +111,7 @@ var ddos = function() {
 		var now = new Date().getTime();
 		actsPerSecond++;
 		if (timer + 1000 < now ) {
-			cnsl.innerHTML = actsPerSecond + ' ' + add;
+			cnsl.innerHTML = actsPerSecond + ' ' + Math.random();
 			timer = new Date().getTime();
 			actsPerSecond = 0;
 		}
