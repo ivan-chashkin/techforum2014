@@ -101,7 +101,7 @@ var chart = new Highcharts.Chart({
     },
     yAxis: {
     	min: 0,
-    	max: 0.6,
+    	max: 0.8,
         title: {
             text: 'Amperage'
         }
