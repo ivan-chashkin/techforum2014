@@ -92,8 +92,8 @@
 		<h2>Емкость аккумулятора</h2>
 		<ul>
 			<li>Ёмкость: 2915 мА⋅ч = 10494 Кл</li>
-			<li class="next">Время жизни: 10494 Кл / 68.04 К·ч = 154 ч 😒</li>
-			<li class="next">iPod touch 5: 0,0036 К·с = 810 ч = 33 дня 😝</li>
+			<li class="next">Время жизни: 10494 Кл / 68.04 К·ч = 154 ч :-(</li>
+			<li class="next">iPod touch 5: 0,0036 К·с = 810 ч = 33 дня :-)</li>
 		</ul>
 	</div></section>
 
@@ -167,13 +167,13 @@
 	</div></section>
 
 	<section class="slide"><div>
-		<h2>Safari: CSS Transform animate</h2>
+		<h2>Safari: CSS Transform (translate) animate</h2>
 		<img src="pictures/css_transform.svg" alt="" width="100%" />
 		<div>0.4891 Кл - анимация 3 секунды</div>
 	</div></section>
 
 	<section class="slide"><div>
-		<h2>Safari: CSS DOM animate</h2>
+		<h2>Safari: CSS DOM (left/top) animate</h2>
 		<img src="pictures/css_dom.svg" alt="" width="100%" />
 		<div>1.0694 Кл - анимация 3 секунды</div>
 	</div></section>
@@ -347,7 +347,7 @@
 	<section class="slide"><div>
 		<h2>Safari: localStorage - DDOS</h2>
 		<img src="pictures/localstorage_ddos.svg" alt="" width="100%" />
-		<div>50Кб random (60 в секунду)...</div>
+		<div>50Кб random (60 в секунду)... +0,0524 Кл·с</div>
 	</div></section>
 
 	<section class="slide"><div>
@@ -393,6 +393,36 @@
 		<h2>Safari: 3g <span style="color:#2f7ed8;">ajax</span></h2>
 		<img src="pictures/js_3g_ajax.svg" alt="" width="100%" />
 		<p>0.8973К <strong>(!!! 6 секунд !!!)</strong>.<br /><span class="next">Connection: close; <strong>(4.5 секунды)</strong></span></p>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Safari: Connection: [keep-alive|close]</h2>
+		<img src="pictures/http_connection.svg" alt="" width="100%" />
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Safari: Connection: [keep-alive|close]</h2>
+		<table>
+			<thead>
+				<tr>
+					<th></th>
+					<td>время (секунд)</td>
+					<td>энергия (кулон)</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>keep-alive</th>
+					<td>7.5</td>
+					<td>2.4009</td>
+				</tr>
+				<tr>
+					<th>close</th>
+					<td>4.4</td>
+					<td>1.2745</td>
+				</tr>
+			</tbody>
+		</table>
 	</div></section>
 
 	<section class="slide"><div>
@@ -478,11 +508,11 @@
 				</tr>
 				<tr>
 					<th>appendChild</th>
-					<td>лучше innerHTML</td>
+					<td>лучше чем innerHTML</td>
 				</tr>
 				<tr>
 					<th>jQuery.on</th>
-					<td>лучше addEventListener</td>
+					<td>сильно хуже чем addEventListener</td>
 				</tr>
 				<tr>
 					<th>localStorage</th>
